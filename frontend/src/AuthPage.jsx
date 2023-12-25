@@ -4,8 +4,11 @@ const AuthPage = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     const { value } = e.target[0];
+
+    const apiUrl = "https://chat-pearl-ten.vercel.app";
+
     axios
-      .post("chat-pearl-ten.vercel.app", { username: value })
+      .post(`${apiUrl}/your-auth-endpoint`, { username: value }) // Update "your-auth-endpoint" with the actual endpoint
       .then((r) => props.onAuth({ ...r.data, secret: value }))
       .catch((e) => console.log("error", e));
   };
