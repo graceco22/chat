@@ -12,7 +12,7 @@ app.post("/authenticate", async (req, res) => {
 
   try {
     const r = await axios.put(
-        "https://api.chatengine.io/users/",
+        "https://chat-pearl-ten.vercel.app",
         { username: username, secret: username, first_name: username },
         { headers: { "PRIVATE-KEY": "ce2f5c66-ef2b-4153-866e-f69937f4a8e7" } }
     );
