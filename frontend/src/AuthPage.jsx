@@ -8,7 +8,7 @@ const AuthPage = (props) => {
     const apiUrl = "https://chat-pearl-ten.vercel.app";
 
     axios
-      .post(`${apiUrl}/your-auth-endpoint`, { username: value }) // Update "your-auth-endpoint" with the actual endpoint
+      .post(`${apiUrl}/authenticate`, { username: value })
       .then((r) => props.onAuth({ ...r.data, secret: value }))
       .catch((e) => console.log("error", e));
   };
