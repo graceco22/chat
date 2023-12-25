@@ -1,22 +1,13 @@
-// AuthPage.jsx
-
 import axios from "axios";
 
 const AuthPage = (props) => {
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     const { value } = e.target[0];
-
-    const apiUrl = "https://chat-pearl-ten.vercel.app";
-
-    try {
-      const response = await axios.post(`${apiUrl}/authenticate`, {
-        username: value,
-      });
-      props.onAuth({ ...response.data, secret: value });
-    } catch (error) {
-      console.log("Error:", error);
-    }
+    axios
+      .post("http://localhost:3001/authenticate", { username: value })
+      .then((r) => props.onAuth({ ...r.data, secret: value }))
+      .catch((e) => console.log("error", e));
   };
 
   return (
