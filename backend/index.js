@@ -5,6 +5,14 @@ const axios = require("axios");
 const app = express();
 const port = process.env.PORT || 3001;
 
+const cors = require('cors');
+// Allow all origins
+app.use(cors());
+// Allow specific origin(s)
+app.use(cors({
+  origin: 'https://chat-frontend-six-nu.vercel.app'
+}));
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
